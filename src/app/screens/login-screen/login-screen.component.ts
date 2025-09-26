@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { FacadeService } from 'src/app/services/facade.service';
 
 @Component({
   selector: 'app-login-screen',
@@ -15,7 +16,8 @@ export class LoginScreenComponent implements OnInit {
   public load:boolean = false;
 
   constructor(
-    public router: Router
+    public router: Router,
+    private facadeService: FacadeService
   ) { }
 
   ngOnInit(): void {
@@ -23,6 +25,13 @@ export class LoginScreenComponent implements OnInit {
   }
 
   public login(){
+    this.errors = {};
+    this.errors = this.facadeService.validarLogin(this.username, this.password);
+    if(Object.keys(this.errors).length > 0){
+      return false;
+    }
+    // TODO: Aquí va la llamada al servicio para validar el login
+    console.log("Pasó la validación");
 
   }
 
