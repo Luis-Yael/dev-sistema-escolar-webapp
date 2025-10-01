@@ -16,11 +16,14 @@
           </button>
         </div>
       </mat-card-header>
-      <!-- Radio buttons como contenido para elegir al ususario -->
+
       <mat-card-content>
         <div class="role-row">
-          <mat-radio-group aria-label="Tipo de usuario" [(ngModel)]="user.tipo_usuario" (change)="radioChange($event)" [disabled]="editar">
-            <!-- Administrador -->
+          <mat-radio-group aria-label="Tipo de usuario"
+            [(ngModel)]="user.tipo_usuario"
+            (change)="radioChange($event)"
+            [disabled]="editar">
+
             <mat-radio-button
               class="role-pill"
               value="administrador"
@@ -28,12 +31,12 @@
               <mat-icon class="me-1" fontIcon="admin_panel_settings"></mat-icon>
               <span class="text-radio">Administrador</span>
             </mat-radio-button>
-            <!-- Alumno -->
-             <mat-radio-button class="role-pill" value="alumno">
+
+            <mat-radio-button class="role-pill" value="alumno">
               <mat-icon class="me-1" fontIcon="school"></mat-icon>
               <span class="text-radio">Alumno</span>
             </mat-radio-button>
-            <!-- Profesor -->
+
             <mat-radio-button
               class="role-pill"
               value="maestro"
@@ -41,7 +44,6 @@
               <mat-icon class="me-1" fontIcon="person"></mat-icon>
               <span class="text-radio">Maestro</span>
             </mat-radio-button>
-
           </mat-radio-group>
         </div>
       </mat-card-content>
@@ -54,6 +56,7 @@
       <app-registro-alumnos *ngIf="isAlumno" [rol]="tipo_user" [datos_user]="editar ? user : null"></app-registro-alumnos>
 
       <app-registro-maestros *ngIf="isMaestro" [rol]="tipo_user" [datos_user]="editar ? user : null"></app-registro-maestros>
+
     </div>
   </div>
 </div>
